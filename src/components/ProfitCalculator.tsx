@@ -17,7 +17,7 @@ export default function ProfitCalculator() {
   const [quantity, setQuantity] = useState([10]);
   const [showAssistant, setShowAssistant] = useState(false);
 
-  // Расчеты
+  // Berechnungen
   const amazonFeeAmount = (salePrice * amazonFee) / 100;
   const totalCosts = costPrice + shipping + amazonFeeAmount;
   const profitPerItem = salePrice - totalCosts;
@@ -33,94 +33,94 @@ export default function ProfitCalculator() {
   };
 
   const getProfitBadge = (margin: number) => {
-    if (margin >= 30) return { text: "Отличная прибыль", color: "bg-green-500/20 text-green-300 border-green-500/30" };
-    if (margin >= 20) return { text: "Хорошая прибыль", color: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30" };
-    if (margin >= 10) return { text: "Низкая прибыль", color: "bg-orange-500/20 text-orange-300 border-orange-500/30" };
-    return { text: "Убыточно", color: "bg-red-500/20 text-red-300 border-red-500/30" };
+    if (margin >= 30) return { text: "Ausgezeichneter Gewinn", color: "bg-green-500/20 text-green-300 border-green-500/30" };
+    if (margin >= 20) return { text: "Guter Gewinn", color: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30" };
+    if (margin >= 10) return { text: "Geringer Gewinn", color: "bg-orange-500/20 text-orange-300 border-orange-500/30" };
+    return { text: "Verlust", color: "bg-red-500/20 text-red-300 border-red-500/30" };
   };
 
-  // AI-ассистент по прибыли
+  // KI-Gewinn-Assistent
   const getAIRecommendations = () => {
     const recommendations = [];
     const warnings = [];
     const insights = [];
 
-    // Анализ маржинальности
+    // Margenanalyse
     if (profitMargin < 15) {
       warnings.push({
         icon: AlertTriangle,
-        title: "Низкая маржинальность",
-        text: "Маржа менее 15% - высокий риск убытков при изменении цен"
+        title: "Geringe Marge",
+        text: "Eine Marge von weniger als 15 % birgt ein hohes Verlustrisiko bei Preisänderungen"
       });
-      recommendations.push("Найди поставщиков с более низкими ценами или товары с большей наценкой");
+      recommendations.push("Finden Sie Lieferanten mit niedrigeren Preisen oder Produkte mit höheren Aufschlägen");
     }
 
     if (profitMargin >= 30) {
       insights.push({
         icon: CheckCircle,
-        title: "Отличная маржинальность",
-        text: "Маржа выше 30% - идеально для стабильного заработка"
+        title: "Ausgezeichnete Marge",
+        text: "Eine Marge von über 30 % ist ideal für ein stabiles Einkommen"
       });
-      recommendations.push("Масштабируй продажи этого товара, увеличь количество");
+      recommendations.push("Skalieren Sie den Verkauf dieses Produkts, erhöhen Sie die Menge");
     }
 
-    // Анализ комиссии Amazon
+    // Analyse der Amazon-Gebühren
     if (amazonFee > 20) {
       warnings.push({
         icon: AlertTriangle,
-        title: "Высокая комиссия Amazon",
-        text: "Комиссия выше 20% существенно снижает прибыль"
+        title: "Hohe Amazon-Gebühr",
+        text: "Eine Gebühr von über 20 % schmälert den Gewinn erheblich"
       });
-      recommendations.push("Рассмотри товары в категориях с меньшей комиссией (Books, Media - 15%)");
+      recommendations.push("Ziehen Sie Produkte in Kategorien mit niedrigeren Gebühren in Betracht (Bücher, Medien - 15 %)");
     }
 
-    // Анализ доставки
+    // Versandanalyse
     const shippingPercent = (shipping / salePrice) * 100;
     if (shippingPercent > 15) {
       warnings.push({
         icon: AlertTriangle,
-        title: "Дорогая доставка",
-        text: "Стоимость доставки составляет более 15% от цены товара"
+        title: "Teurer Versand",
+        text: "Die Versandkosten betragen mehr als 15 % des Produktpreises"
       });
-      recommendations.push("Оптимизируй логистику или найди поставщиков с бесплатной доставкой");
+      recommendations.push("Optimieren Sie die Logistik oder finden Sie Lieferanten mit kostenlosem Versand");
     }
 
-    // Анализ объемов
+    // Volumenanalyse
     if (totalProfit < 500) {
       insights.push({
         icon: TrendingUp,
-        title: "Малый объем продаж",
-        text: "Для серьезного заработка увеличь количество или найди более дорогие товары"
+        title: "Geringes Verkaufsvolumen",
+        text: "Um ernsthaft Geld zu verdienen, erhöhen Sie die Menge oder finden Sie teurere Produkte"
       });
-      recommendations.push("Стремись к месячной прибыли от $1000 для стабильного дохода");
+      recommendations.push("Streben Sie einen monatlichen Gewinn von 1000 $ für ein stabiles Einkommen an");
     }
 
     if (totalProfit > 2000) {
       insights.push({
         icon: CheckCircle,
-        title: "Отличный потенциал",
-        text: "При такой прибыли ты можешь зарабатывать серьезные деньги"
+        title: "Ausgezeichnetes Potenzial",
+        text: "Mit einem solchen Gewinn können Sie ernsthaft Geld verdienen"
       });
-      recommendations.push("Автоматизируй процессы и наймите виртуального помощника");
+      recommendations.push("Automatisieren Sie Prozesse und stellen Sie einen virtuellen Assistenten ein");
     }
 
-    // Анализ ценового диапазона
+    // Preispunktanalyse
     if (salePrice < 15) {
       warnings.push({
         icon: AlertTriangle,
-        title: "Низкая цена товара",
-        text: "Товары до $15 часто имеют низкую прибыль после всех расходов"
+        title: "Niedriger Produktpreis",
+        text: "Produkte unter 15 $ haben nach allen Ausgaben oft einen geringen Gewinn"
       });
-      recommendations.push("Фокусируйся на товарах от $20 до $100 для лучшей маржинальности");
+      recommendations.push("Konzentrieren Sie sich auf Produkte zwischen 20 und 100 US-Dollar für eine bessere Marge");
     }
 
     if (salePrice > 100) {
       insights.push({
         icon: Lightbulb,
-        title: "Дорогой товар",
-        text: "Дорогие товары могут иметь меньший спрос, но большую прибыль с единицы"
+        title: "Teures Produkt",
+        text: "Teure Produkte haben möglicherweise eine geringere Nachfrage, aber einen höheren Gewinn pro Einheit"
       });
-      recommendations.push("Убедись, что есть стабильный спрос на товары в этом ценовом сегменте");
+      recommendations.push("Stellen Sie sicher, dass eine stabile Nachfrage nach Produkten in diesem Preissegment besteht");
     }
 
     return { recommendations, warnings, insights };
@@ -135,15 +135,15 @@ export default function ProfitCalculator() {
         <CardHeader>
           <CardTitle className="text-white flex items-center gap-3">
             <span className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center text-sm">🧮</span>
-            Калькулятор прибыльности FBM
+            FBM-Gewinnrechner
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          {/* Входные параметры */}
+          {/* Eingabeparameter */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div>
-                <Label htmlFor="salePrice" className="text-white">Цена продажи на Amazon ($)</Label>
+                <Label htmlFor="salePrice" className="text-white">Verkaufspreis bei Amazon ($)</Label>
                 <Input
                   id="salePrice"
                   type="number"
@@ -156,7 +156,7 @@ export default function ProfitCalculator() {
               </div>
 
               <div>
-                <Label htmlFor="costPrice" className="text-white">Цена закупки ($)</Label>
+                <Label htmlFor="costPrice" className="text-white">Einkaufspreis ($)</Label>
                 <Input
                   id="costPrice"
                   type="number"
@@ -169,7 +169,7 @@ export default function ProfitCalculator() {
               </div>
 
               <div>
-                <Label htmlFor="shipping" className="text-white">Доставка до клиента ($)</Label>
+                <Label htmlFor="shipping" className="text-white">Versand zum Kunden ($)</Label>
                 <Input
                   id="shipping"
                   type="number"
@@ -184,7 +184,7 @@ export default function ProfitCalculator() {
 
             <div className="space-y-4">
               <div>
-                <Label htmlFor="amazonFee" className="text-white">Комиссия Amazon (%)</Label>
+                <Label htmlFor="amazonFee" className="text-white">Amazon-Gebühr (%)</Label>
                 <div className="mt-2">
                   <Slider
                     value={[amazonFee]}
@@ -203,7 +203,7 @@ export default function ProfitCalculator() {
               </div>
 
               <div>
-                <Label htmlFor="quantity" className="text-white">Количество товаров в месяц</Label>
+                <Label htmlFor="quantity" className="text-white">Anzahl der Produkte pro Monat</Label>
                 <div className="mt-2">
                   <Slider
                     value={quantity}
@@ -215,7 +215,7 @@ export default function ProfitCalculator() {
                   />
                   <div className="flex justify-between text-sm text-gray-400 mt-1">
                     <span>1</span>
-                    <span className="text-white font-medium">{quantity[0]} шт</span>
+                    <span className="text-white font-medium">{quantity[0]} Stk</span>
                     <span>200</span>
                   </div>
                 </div>
@@ -223,10 +223,10 @@ export default function ProfitCalculator() {
             </div>
           </div>
 
-          {/* Результаты расчета */}
+          {/* Berechnungsergebnisse */}
           <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-xl p-6 border border-blue-500/30">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-white">Результаты расчета</h3>
+              <h3 className="text-xl font-bold text-white">Berechnungsergebnisse</h3>
               <Badge className={badge.color}>
                 {badge.text}
               </Badge>
@@ -235,52 +235,52 @@ export default function ProfitCalculator() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Цена продажи:</span>
+                  <span className="text-gray-400">Verkaufspreis:</span>
                   <span className="text-white font-medium">${salePrice.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Цена закупки:</span>
+                  <span className="text-gray-400">Einkaufspreis:</span>
                   <span className="text-white font-medium">${costPrice.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Доставка:</span>
+                  <span className="text-gray-400">Versand:</span>
                   <span className="text-white font-medium">${shipping.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Комиссия Amazon:</span>
+                  <span className="text-gray-400">Amazon-Gebühr:</span>
                   <span className="text-white font-medium">${amazonFeeAmount.toFixed(2)}</span>
                 </div>
                 <hr className="border-gray-600" />
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Общие расходы:</span>
+                  <span className="text-gray-400">Gesamtkosten:</span>
                   <span className="text-white font-medium">${totalCosts.toFixed(2)}</span>
                 </div>
               </div>
 
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Прибыль с единицы:</span>
+                  <span className="text-gray-400">Gewinn pro Einheit:</span>
                   <span className={`font-bold ${getProfitColor(profitMargin)}`}>
                     ${profitPerItem.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Маржинальность:</span>
+                  <span className="text-gray-400">Gewinnmarge:</span>
                   <span className={`font-bold ${getProfitColor(profitMargin)}`}>
                     {profitMargin.toFixed(1)}%
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Количество:</span>
-                  <span className="text-white font-medium">{quantity[0]} шт</span>
+                  <span className="text-gray-400">Menge:</span>
+                  <span className="text-white font-medium">{quantity[0]} Stk</span>
                 </div>
                 <hr className="border-gray-600" />
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Общая выручка:</span>
+                  <span className="text-gray-400">Gesamtumsatz:</span>
                   <span className="text-blue-400 font-bold">${totalRevenue.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Общая прибыль:</span>
+                  <span className="text-gray-400">Gesamtgewinn:</span>
                   <span className={`font-bold text-lg ${getProfitColor(profitMargin)}`}>
                     ${totalProfit.toFixed(2)}
                   </span>
@@ -289,38 +289,38 @@ export default function ProfitCalculator() {
             </div>
           </div>
 
-          {/* Кнопка AI-ассистента */}
+          {/* KI-Assistent-Button */}
           <div className="flex justify-center">
             <Button
               onClick={() => setShowAssistant(!showAssistant)}
               className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-lg"
             >
               <Brain className="w-5 h-5 mr-2" />
-              {showAssistant ? "Скрыть ассистента" : "Получить анализ AI"}
+              {showAssistant ? "Assistent ausblenden" : "KI-Analyse erhalten"}
             </Button>
           </div>
         </CardContent>
       </Card>
 
-      {/* AI-ассистент */}
+      {/* KI-Assistent */}
       {showAssistant && (
         <Card className="bg-gradient-to-b from-purple-900/20 to-pink-900/20 border-purple-500/30 animate-scale-in">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-3">
               <Brain className="w-8 h-8 text-purple-400" />
-              AI-ассистент по прибыли
+              KI-Gewinn-Assistent
               <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
                 Beta
               </Badge>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            {/* Предупреждения */}
+            {/* Warnungen */}
             {aiAnalysis.warnings.length > 0 && (
               <div className="space-y-3">
                 <h4 className="text-lg font-semibold text-red-400 flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5" />
-                  Предупреждения
+                  Warnungen
                 </h4>
                 {aiAnalysis.warnings.map((warning, index) => (
                   <div key={index} className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 flex items-start gap-3">
@@ -334,12 +334,12 @@ export default function ProfitCalculator() {
               </div>
             )}
 
-            {/* Инсайты */}
+            {/* Einblicke */}
             {aiAnalysis.insights.length > 0 && (
               <div className="space-y-3">
                 <h4 className="text-lg font-semibold text-blue-400 flex items-center gap-2">
                   <Lightbulb className="w-5 h-5" />
-                  Анализ и инсайты
+                  Analyse & Einblicke
                 </h4>
                 {aiAnalysis.insights.map((insight, index) => (
                   <div key={index} className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 flex items-start gap-3">
@@ -353,11 +353,11 @@ export default function ProfitCalculator() {
               </div>
             )}
 
-            {/* Рекомендации */}
+            {/* Empfehlungen */}
             <div className="space-y-3">
               <h4 className="text-lg font-semibold text-green-400 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5" />
-                Персональные рекомендации
+                Persönliche Empfehlungen
               </h4>
               <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
                 <ul className="space-y-2">
@@ -371,15 +371,15 @@ export default function ProfitCalculator() {
               </div>
             </div>
 
-            {/* Общий вердикт */}
+            {/* Gesamturteil */}
             <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border border-purple-500/30 rounded-lg p-4">
-              <h4 className="text-lg font-semibold text-purple-300 mb-2">🎯 Общий вердикт:</h4>
+              <h4 className="text-lg font-semibold text-purple-300 mb-2">🎯 Gesamturteil:</h4>
               <p className="text-purple-200 text-sm">
                 {profitMargin >= 25
-                  ? "Отличный товар для FBM арбитража! Высокая маржинальность позволяет масштабировать бизнес."
+                  ? "Ausgezeichnetes Produkt für FBM-Arbitrage! Die hohe Marge ermöglicht die Skalierung des Geschäfts."
                   : profitMargin >= 15
-                  ? "Неплохой товар, но есть возможности для оптимизации. Работай над снижением затрат."
-                  : "Этот товар требует серьезной оптимизации или лучше найти альтернативы с большей прибылью."
+                  ? "Kein schlechtes Produkt, aber es gibt Optimierungspotenzial. Arbeiten Sie an der Kostensenkung."
+                  : "Dieses Produkt erfordert eine ernsthafte Optimierung oder es ist besser, Alternativen mit höherem Gewinn zu finden."
                 }
               </p>
             </div>

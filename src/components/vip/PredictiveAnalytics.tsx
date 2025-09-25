@@ -49,9 +49,9 @@ export default function PredictiveAnalytics() {
       predictedDemand: 24000,
       change: 60,
       confidence: 94,
-      timeframe: "30 дней",
+      timeframe: "30 Tage",
       recommendation: "buy",
-      reasoning: "Приближается киберспортивный сезон, исторически спрос растет на 70%"
+      reasoning: "Die E-Sport-Saison naht, die Nachfrage steigt historisch um 70 %"
     },
     {
       id: "2",
@@ -61,9 +61,9 @@ export default function PredictiveAnalytics() {
       predictedDemand: 12800,
       change: 51,
       confidence: 87,
-      timeframe: "45 дней",
+      timeframe: "45 Tage",
       recommendation: "buy",
-      reasoning: "Новогодние резолюции, пик продаж фитнес-товаров в январе-марте"
+      reasoning: "Neujahrsvorsätze, Spitzenverkäufe von Fitnessprodukten von Januar bis März"
     },
     {
       id: "3",
@@ -73,9 +73,9 @@ export default function PredictiveAnalytics() {
       predictedDemand: 3200,
       change: -85,
       confidence: 96,
-      timeframe: "30 дней",
+      timeframe: "30 Tage",
       recommendation: "sell",
-      reasoning: "Окончание сезона Хэллоуина, резкое падение спроса"
+      reasoning: "Ende der Halloween-Saison, starker Nachfragerückgang"
     },
     {
       id: "4",
@@ -85,21 +85,21 @@ export default function PredictiveAnalytics() {
       predictedDemand: 18500,
       change: 256,
       confidence: 91,
-      timeframe: "60 дней",
+      timeframe: "60 Tage",
       recommendation: "buy",
-      reasoning: "Зимний сезон, исторически спрос увеличивается в 3-4 раза"
+      reasoning: "Wintersaison, die Nachfrage steigt historisch um das 3-4-fache"
     }
   ];
 
   const trendData: TrendData[] = [
-    { month: "Янв", sales: 12000, predicted: 11800 },
-    { month: "Фев", sales: 15000, predicted: 14900 },
-    { month: "Мар", sales: 18000, predicted: 18200 },
-    { month: "Апр", sales: 14000, predicted: 14100 },
-    { month: "Май", sales: 16000, predicted: 15950 },
-    { month: "Июн", sales: 0, predicted: 17200 },
-    { month: "Июл", sales: 0, predicted: 19500 },
-    { month: "Авг", sales: 0, predicted: 21000 }
+    { month: "Jan", sales: 12000, predicted: 11800 },
+    { month: "Feb", sales: 15000, predicted: 14900 },
+    { month: "Mär", sales: 18000, predicted: 18200 },
+    { month: "Apr", sales: 14000, predicted: 14100 },
+    { month: "Mai", sales: 16000, predicted: 15950 },
+    { month: "Jun", sales: 0, predicted: 17200 },
+    { month: "Jul", sales: 0, predicted: 19500 },
+    { month: "Aug", sales: 0, predicted: 21000 }
   ];
 
   const getRecommendationColor = (rec: string) => {
@@ -114,11 +114,11 @@ export default function PredictiveAnalytics() {
 
   const getRecommendationText = (rec: string) => {
     switch (rec) {
-      case "buy": return "Покупать";
-      case "sell": return "Продавать";
-      case "hold": return "Держать";
-      case "avoid": return "Избегать";
-      default: return "Неизвестно";
+      case "buy": return "Kaufen";
+      case "sell": return "Verkaufen";
+      case "hold": return "Halten";
+      case "avoid": return "Vermeiden";
+      default: return "Unbekannt";
     }
   };
 
@@ -142,9 +142,9 @@ export default function PredictiveAnalytics() {
         <CardHeader>
           <CardTitle className="text-white flex items-center gap-3">
             <Brain className="w-8 h-8 text-purple-400" />
-            Predictive Analytics
+            Prädiktive Analytik
             <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 animate-pulse">
-              89% точность
+              89% Genauigkeit
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -152,15 +152,15 @@ export default function PredictiveAnalytics() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-black/40 rounded-lg p-4 border border-gray-700 text-center">
               <div className="text-2xl font-bold text-purple-400 mb-1">2.1M+</div>
-              <div className="text-gray-400 text-sm">продаж проанализировано</div>
+              <div className="text-gray-400 text-sm">Verkäufe analysiert</div>
             </div>
             <div className="bg-black/40 rounded-lg p-4 border border-gray-700 text-center">
               <div className="text-2xl font-bold text-blue-400 mb-1">89%</div>
-              <div className="text-gray-400 text-sm">точность прогнозов</div>
+              <div className="text-gray-400 text-sm">Prognosegenauigkeit</div>
             </div>
             <div className="bg-black/40 rounded-lg p-4 border border-gray-700 text-center">
               <div className="text-2xl font-bold text-green-400 mb-1">+347%</div>
-              <div className="text-gray-400 text-sm">ROI пользователей</div>
+              <div className="text-gray-400 text-sm">Benutzer-ROI</div>
             </div>
           </div>
         </CardContent>
@@ -169,13 +169,13 @@ export default function PredictiveAnalytics() {
       <Tabs defaultValue="predictions" className="space-y-6">
         <TabsList className="grid w-full grid-cols-3 bg-gray-800 border border-gray-700">
           <TabsTrigger value="predictions" className="data-[state=active]:bg-purple-600">
-            Прогнозы спроса
+            Nachfrageprognosen
           </TabsTrigger>
           <TabsTrigger value="trends" className="data-[state=active]:bg-purple-600">
-            Тренды категорий
+            Kategorietrends
           </TabsTrigger>
           <TabsTrigger value="insights" className="data-[state=active]:bg-purple-600">
-            AI Инсайты
+            KI-Einblicke
           </TabsTrigger>
         </TabsList>
 
@@ -185,7 +185,7 @@ export default function PredictiveAnalytics() {
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-3">
                 <Target className="w-6 h-6 text-green-400" />
-                Прогнозы спроса на товары
+                Produktnachfrageprognosen
                 <div className="ml-auto flex gap-2">
                   {["30", "60", "90"].map((days) => (
                     <Button
@@ -195,7 +195,7 @@ export default function PredictiveAnalytics() {
                       onClick={() => setSelectedTimeframe(days)}
                       className={selectedTimeframe === days ? "bg-purple-600" : "border-gray-600 text-gray-300"}
                     >
-                      {days} дней
+                      {days} Tage
                     </Button>
                   ))}
                 </div>
@@ -214,11 +214,11 @@ export default function PredictiveAnalytics() {
 
                         <div className="space-y-2">
                           <div className="flex justify-between text-sm">
-                            <span className="text-gray-400">Текущий спрос:</span>
+                            <span className="text-gray-400">Aktuelle Nachfrage:</span>
                             <span className="text-white">{prediction.currentDemand.toLocaleString()}</span>
                           </div>
                           <div className="flex justify-between text-sm">
-                            <span className="text-gray-400">Прогноз:</span>
+                            <span className="text-gray-400">Prognose:</span>
                             <span className="text-purple-400 font-medium">{prediction.predictedDemand.toLocaleString()}</span>
                           </div>
                         </div>
@@ -234,18 +234,18 @@ export default function PredictiveAnalytics() {
                             {getRecommendationText(prediction.recommendation)}
                           </Badge>
                           <div className="text-xs text-gray-400 mt-1">
-                            Уверенность: {prediction.confidence}%
+                            Zuversicht: {prediction.confidence}%
                           </div>
                         </div>
 
                         <div className="space-y-2">
                           <div className="bg-gray-700/50 rounded-lg p-3">
-                            <div className="text-xs text-gray-400 mb-1">AI Обоснование:</div>
+                            <div className="text-xs text-gray-400 mb-1">KI-Begründung:</div>
                             <p className="text-white text-sm">{prediction.reasoning}</p>
                           </div>
                           <Button size="sm" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
                             <Zap className="w-3 h-3 mr-1" />
-                            Применить стратегию
+                            Strategie anwenden
                           </Button>
                         </div>
                       </div>
@@ -263,13 +263,13 @@ export default function PredictiveAnalytics() {
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-3">
                 <BarChart3 className="w-6 h-6 text-blue-400" />
-                Тренды по категориям
+                Kategorietrends
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-4">Топ растущие категории</h3>
+                  <h3 className="text-lg font-semibold text-white mb-4">Top wachsende Kategorien</h3>
                   <div className="space-y-3">
                     {topCategories.map((category) => (
                       <div key={category.name} className="bg-gray-800/50 rounded-lg p-4 border border-gray-700">
@@ -280,7 +280,7 @@ export default function PredictiveAnalytics() {
                           </Badge>
                         </div>
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-400">Уверенность прогноза:</span>
+                          <span className="text-gray-400">Prognosezuversicht:</span>
                           <span className="text-blue-400">{category.confidence}%</span>
                         </div>
                       </div>
@@ -289,7 +289,7 @@ export default function PredictiveAnalytics() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-4">График продаж vs прогноз</h3>
+                  <h3 className="text-lg font-semibold text-white mb-4">Verkaufs- vs. Prognosediagramm</h3>
                   <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700">
                     <div className="space-y-3">
                       {trendData.slice(0, 6).map((data) => (
@@ -323,27 +323,27 @@ export default function PredictiveAnalytics() {
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-green-400" />
-                  Возможности
+                  Möglichkeiten
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
-                  <h4 className="font-semibold text-green-300 mb-2">🎯 Зимний сезон</h4>
+                  <h4 className="font-semibold text-green-300 mb-2">🎯 Wintersaison</h4>
                   <p className="text-green-200 text-sm mb-2">
-                    Спрос на товары для дома увеличится на 180% в ближайшие 45 дней
+                    Die Nachfrage nach Haushaltswaren wird in den nächsten 45 Tagen um 180 % steigen
                   </p>
                   <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
-                    Высокий приоритет
+                    Hohe Priorität
                   </Badge>
                 </div>
 
                 <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
-                  <h4 className="font-semibold text-blue-300 mb-2">🎮 Gaming сезон</h4>
+                  <h4 className="font-semibold text-blue-300 mb-2">🎮 Gaming-Saison</h4>
                   <p className="text-blue-200 text-sm mb-2">
-                    Киберспортивные турниры стимулируют спрос на игровые аксессуары
+                    E-Sport-Turniere treiben die Nachfrage nach Gaming-Zubehör an
                   </p>
                   <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
-                    Средний приоритет
+                    Mittlere Priorität
                   </Badge>
                 </div>
               </CardContent>
@@ -353,27 +353,27 @@ export default function PredictiveAnalytics() {
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-3">
                   <AlertTriangle className="w-6 h-6 text-red-400" />
-                  Предупреждения
+                  Warnungen
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
-                  <h4 className="font-semibold text-red-300 mb-2">⚠️ Сезонный спад</h4>
+                  <h4 className="font-semibold text-red-300 mb-2">⚠️ Saisonaler Rückgang</h4>
                   <p className="text-red-200 text-sm mb-2">
-                    Товары для активного отдыха покажут снижение спроса на 60%
+                    Die Nachfrage nach Outdoor-Produkten wird um 60 % sinken
                   </p>
                   <Badge className="bg-red-500/20 text-red-300 border-red-500/30">
-                    Критично
+                    Kritisch
                   </Badge>
                 </div>
 
                 <div className="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4">
-                  <h4 className="font-semibold text-yellow-300 mb-2">📉 Перенасыщение</h4>
+                  <h4 className="font-semibold text-yellow-300 mb-2">📉 Übersättigung</h4>
                   <p className="text-yellow-200 text-sm mb-2">
-                    Рынок беспроводных наушников показывает признаки насыщения
+                    Der Markt für kabellose Kopfhörer zeigt Anzeichen einer Sättigung
                   </p>
                   <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
-                    Внимание
+                    Achtung
                   </Badge>
                 </div>
               </CardContent>

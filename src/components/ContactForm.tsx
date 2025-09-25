@@ -15,7 +15,7 @@ interface ContactFormProps {
   triggerText?: string;
 }
 
-export default function ContactForm({ trigger, triggerText = "Связаться с нами" }: ContactFormProps) {
+export default function ContactForm({ trigger, triggerText = "Kontaktieren Sie uns" }: ContactFormProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ export default function ContactForm({ trigger, triggerText = "Связаться
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Здесь будет логика отправки формы
+    // Hier wird die Logik für das Absenden des Formulars implementiert
     console.log("Form submitted:", formData);
     setIsSubmitted(true);
     setTimeout(() => {
@@ -62,7 +62,7 @@ export default function ContactForm({ trigger, triggerText = "Связаться
       <DialogContent className="sm:max-w-[500px] bg-black/95 backdrop-blur-xl border border-gray-800 text-white">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Свяжитесь с нами
+            Kontaktieren Sie uns
           </DialogTitle>
         </DialogHeader>
 
@@ -71,14 +71,14 @@ export default function ContactForm({ trigger, triggerText = "Связаться
             <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">✓</span>
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Сообщение отправлено!</h3>
-            <p className="text-gray-400">Мы свяжемся с вами в ближайшее время</p>
+            <h3 className="text-xl font-bold text-white mb-2">Nachricht gesendet!</h3>
+            <p className="text-gray-400">Wir werden uns in Kürze mit Ihnen in Verbindung setzen</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="name" className="text-white">Имя *</Label>
+                <Label htmlFor="name" className="text-white">Name *</Label>
                 <Input
                   id="name"
                   value={formData.name}
@@ -88,7 +88,7 @@ export default function ContactForm({ trigger, triggerText = "Связаться
                 />
               </div>
               <div>
-                <Label htmlFor="email" className="text-white">Email *</Label>
+                <Label htmlFor="email" className="text-white">E-Mail *</Label>
                 <Input
                   id="email"
                   type="email"
@@ -101,55 +101,55 @@ export default function ContactForm({ trigger, triggerText = "Связаться
             </div>
 
             <div>
-              <Label htmlFor="phone" className="text-white">Телефон</Label>
+              <Label htmlFor="phone" className="text-white">Telefon</Label>
               <Input
                 id="phone"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
                 className="bg-gray-800 border-gray-700 text-white mt-1"
-                placeholder="+7 (999) 123-45-67"
+                placeholder="+49 (123) 456-78-90"
               />
             </div>
 
             <div>
-              <Label htmlFor="experience" className="text-white">Опыт в арбитраже</Label>
+              <Label htmlFor="experience" className="text-white">Erfahrung in der Arbitrage</Label>
               <Select onValueChange={(value) => handleInputChange("experience", value)}>
                 <SelectTrigger className="bg-gray-800 border-gray-700 text-white mt-1">
-                  <SelectValue placeholder="Выберите ваш опыт" />
+                  <SelectValue placeholder="Wählen Sie Ihre Erfahrung" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700 text-white">
-                  <SelectItem value="none">Новичок (без опыта)</SelectItem>
-                  <SelectItem value="beginner">Начинающий (до 3 месяцев)</SelectItem>
-                  <SelectItem value="intermediate">Средний (3-12 месяцев)</SelectItem>
-                  <SelectItem value="advanced">Опытный (1+ год)</SelectItem>
+                  <SelectItem value="none">Anfänger (keine Erfahrung)</SelectItem>
+                  <SelectItem value="beginner">Einsteiger (bis 3 Monate)</SelectItem>
+                  <SelectItem value="intermediate">Mittel (3-12 Monate)</SelectItem>
+                  <SelectItem value="advanced">Erfahren (1+ Jahr)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div>
-              <Label htmlFor="subject" className="text-white">Тема обращения</Label>
+              <Label htmlFor="subject" className="text-white">Betreff</Label>
               <Select onValueChange={(value) => handleInputChange("subject", value)}>
                 <SelectTrigger className="bg-gray-800 border-gray-700 text-white mt-1">
-                  <SelectValue placeholder="Выберите тему" />
+                  <SelectValue placeholder="Wählen Sie ein Thema" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700 text-white">
-                  <SelectItem value="subscription">Вопросы по подписке</SelectItem>
-                  <SelectItem value="learning">Обучение и курсы</SelectItem>
-                  <SelectItem value="technical">Технические вопросы</SelectItem>
-                  <SelectItem value="partnership">Партнерство</SelectItem>
-                  <SelectItem value="other">Другое</SelectItem>
+                  <SelectItem value="subscription">Fragen zum Abonnement</SelectItem>
+                  <SelectItem value="learning">Schulungen und Kurse</SelectItem>
+                  <SelectItem value="technical">Technische Fragen</SelectItem>
+                  <SelectItem value="partnership">Partnerschaft</SelectItem>
+                  <SelectItem value="other">Sonstiges</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div>
-              <Label htmlFor="message" className="text-white">Сообщение *</Label>
+              <Label htmlFor="message" className="text-white">Nachricht *</Label>
               <Textarea
                 id="message"
                 value={formData.message}
                 onChange={(e) => handleInputChange("message", e.target.value)}
                 className="bg-gray-800 border-gray-700 text-white mt-1 min-h-[100px]"
-                placeholder="Расскажите подробнее о вашем вопросе..."
+                placeholder="Erzählen Sie uns mehr über Ihre Frage..."
                 required
               />
             </div>
@@ -159,7 +159,7 @@ export default function ContactForm({ trigger, triggerText = "Связаться
                 type="submit"
                 className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
               >
-                Отправить сообщение
+                Nachricht senden
               </Button>
               <Button
                 type="button"
@@ -167,13 +167,13 @@ export default function ContactForm({ trigger, triggerText = "Связаться
                 onClick={() => setIsOpen(false)}
                 className="border-gray-700 text-gray-300 hover:bg-gray-800"
               >
-                Отмена
+                Abbrechen
               </Button>
             </div>
           </form>
         )}
 
-        {/* Контактная информация */}
+        {/* Kontaktinformationen */}
         <div className="border-t border-gray-800 pt-4 mt-6">
           <div className="flex flex-wrap gap-4 text-sm">
             <div className="flex items-center gap-2 text-gray-400">

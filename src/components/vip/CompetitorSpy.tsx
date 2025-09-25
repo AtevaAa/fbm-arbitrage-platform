@@ -98,7 +98,7 @@ export default function CompetitorSpy() {
       id: "1",
       competitor: "Wireless Gaming Headset Pro",
       type: "price_drop",
-      message: "Цена снижена с $89.99 до $79.99 (-11.1%)",
+      message: "Preis von $89.99 auf $79.99 gesenkt (-11.1%)",
       timestamp: new Date(Date.now() - 300000),
       severity: "high"
     },
@@ -106,7 +106,7 @@ export default function CompetitorSpy() {
       id: "2",
       competitor: "Smart Fitness Tracker",
       type: "stock_low",
-      message: "Товар закончился на складе",
+      message: "Produkt nicht mehr auf Lager",
       timestamp: new Date(Date.now() - 180000),
       severity: "high"
     },
@@ -114,7 +114,7 @@ export default function CompetitorSpy() {
       id: "3",
       competitor: "LED Desk Lamp USB-C",
       type: "rank_change",
-      message: "Рейтинг улучшился на 450 позиций",
+      message: "Ranking um 450 Plätze verbessert",
       timestamp: new Date(Date.now() - 120000),
       severity: "medium"
     }
@@ -125,10 +125,10 @@ export default function CompetitorSpy() {
 
   const addCompetitor = () => {
     if (newAsin.trim()) {
-      // В реальном приложении здесь был бы API запрос
+      // In einer echten Anwendung wäre dies ein API-Aufruf
       const newCompetitor: Competitor = {
         id: Date.now().toString(),
-        name: "Новый товар",
+        name: "Neues Produkt",
         asin: newAsin.trim(),
         currentPrice: 0,
         previousPrice: 0,
@@ -157,9 +157,9 @@ export default function CompetitorSpy() {
 
   const formatTimeAgo = (date: Date) => {
     const minutes = Math.floor((Date.now() - date.getTime()) / 60000);
-    if (minutes < 60) return `${minutes} мин назад`;
+    if (minutes < 60) return `${minutes} Min. her`;
     const hours = Math.floor(minutes / 60);
-    return `${hours} ч назад`;
+    return `${hours} Std. her`;
   };
 
   const getPriceChangeColor = (change: number) => {
@@ -169,8 +169,8 @@ export default function CompetitorSpy() {
   };
 
   const getRankChangeColor = (change: number) => {
-    if (change > 0) return "text-red-400"; // Rank увеличился (хуже)
-    if (change < 0) return "text-green-400"; // Rank уменьшился (лучше)
+    if (change > 0) return "text-red-400"; // Rang erhöht (schlechter)
+    if (change < 0) return "text-green-400"; // Rang verringert (besser)
     return "text-gray-400";
   };
 
@@ -193,7 +193,7 @@ export default function CompetitorSpy() {
     }
   };
 
-  // Симуляция обновлений в реальном времени
+  // Echtzeit-Updates simulieren
   useEffect(() => {
     const interval = setInterval(() => {
       if (autoNotifications) {
@@ -214,9 +214,9 @@ export default function CompetitorSpy() {
         <CardHeader>
           <CardTitle className="text-white flex items-center gap-3">
             <Eye className="w-8 h-8 text-green-400" />
-            Шпионаж за конкурентами
+            Konkurrenzspionage
             <Badge className={`${autoNotifications ? 'bg-green-500/20 text-green-300 border-green-500/30 animate-pulse' : 'bg-gray-500/20 text-gray-300 border-gray-500/30'}`}>
-              {autoNotifications ? "Активен" : "Пауза"}
+              {autoNotifications ? "Aktiv" : "Pause"}
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -224,7 +224,7 @@ export default function CompetitorSpy() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label className="text-white">Автоматические уведомления</Label>
+                <Label className="text-white">Automatische Benachrichtigungen</Label>
                 <Switch
                   checked={autoNotifications}
                   onCheckedChange={setAutoNotifications}
@@ -233,7 +233,7 @@ export default function CompetitorSpy() {
 
               <div className="flex gap-2">
                 <Input
-                  placeholder="Введите ASIN товара"
+                  placeholder="Geben Sie die Produkt-ASIN ein"
                   value={newAsin}
                   onChange={(e) => setNewAsin(e.target.value)}
                   className="bg-gray-800 border-gray-700 text-white"
@@ -250,15 +250,15 @@ export default function CompetitorSpy() {
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-black/40 rounded-lg p-3 border border-gray-700 text-center">
                 <div className="text-xl font-bold text-green-400">{competitors.filter(c => c.isTracking).length}</div>
-                <div className="text-gray-400 text-xs">отслеживается</div>
+                <div className="text-gray-400 text-xs">verfolgt</div>
               </div>
               <div className="bg-black/40 rounded-lg p-3 border border-gray-700 text-center">
                 <div className="text-xl font-bold text-yellow-400">{alerts.length}</div>
-                <div className="text-gray-400 text-xs">уведомлений</div>
+                <div className="text-gray-400 text-xs">Benachrichtigungen</div>
               </div>
               <div className="bg-black/40 rounded-lg p-3 border border-gray-700 text-center">
                 <div className="text-xl font-bold text-blue-400">24/7</div>
-                <div className="text-gray-400 text-xs">мониторинг</div>
+                <div className="text-gray-400 text-xs">Überwachung</div>
               </div>
             </div>
           </div>
@@ -271,7 +271,7 @@ export default function CompetitorSpy() {
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-3">
               <Target className="w-6 h-6 text-blue-400" />
-              Отслеживаемые конкуренты
+              Verfolgte Konkurrenten
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -306,11 +306,11 @@ export default function CompetitorSpy() {
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-gray-400">Цена:</span>
+                        <span className="text-gray-400">Preis:</span>
                         <span className="text-white font-medium">${competitor.currentPrice}</span>
                       </div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-gray-400">Изменение:</span>
+                        <span className="text-gray-400">Änderung:</span>
                         <span className={`font-medium ${getPriceChangeColor(competitor.changePercent)}`}>
                           {competitor.changePercent > 0 ? '+' : ''}{competitor.changePercent.toFixed(1)}%
                         </span>
@@ -318,13 +318,13 @@ export default function CompetitorSpy() {
                     </div>
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-gray-400">Рейтинг:</span>
+                        <span className="text-gray-400">Rang:</span>
                         <span className="text-white font-medium">#{competitor.rank.toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-gray-400">Остаток:</span>
+                        <span className="text-gray-400">Lagerbestand:</span>
                         <span className={`font-medium ${competitor.stock < 10 ? 'text-red-400' : 'text-green-400'}`}>
-                          {competitor.stock} шт
+                          {competitor.stock} Stk
                         </span>
                       </div>
                     </div>
@@ -337,7 +337,7 @@ export default function CompetitorSpy() {
                     </div>
                     {competitor.alerts > 0 && (
                       <Badge className="bg-red-500/20 text-red-300 border-red-500/30">
-                        {competitor.alerts} уведомлений
+                        {competitor.alerts} Benachrichtigungen
                       </Badge>
                     )}
                   </div>
@@ -348,7 +348,7 @@ export default function CompetitorSpy() {
             {competitors.length === 0 && (
               <div className="text-center py-8">
                 <Search className="w-12 h-12 text-gray-600 mx-auto mb-3" />
-                <p className="text-gray-400">Добавьте ASIN конкурентов для мониторинга</p>
+                <p className="text-gray-400">Fügen Sie Konkurrenten-ASINs zur Überwachung hinzu</p>
               </div>
             )}
           </CardContent>
@@ -359,9 +359,9 @@ export default function CompetitorSpy() {
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-3">
               <Bell className="w-6 h-6 text-yellow-400" />
-              Уведомления
+              Benachrichtigungen
               <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
-                {alerts.length} новых
+                {alerts.length} neu
               </Badge>
             </CardTitle>
           </CardHeader>
@@ -384,8 +384,8 @@ export default function CompetitorSpy() {
                           alert.severity === 'medium' ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
                           'bg-blue-500/20 text-blue-300 border-blue-500/30'
                         }`}>
-                          {alert.severity === 'high' ? 'Высокий' :
-                           alert.severity === 'medium' ? 'Средний' : 'Низкий'}
+                          {alert.severity === 'high' ? 'Hoch' :
+                           alert.severity === 'medium' ? 'Mittel' : 'Niedrig'}
                         </Badge>
                       </div>
                     </div>
@@ -397,7 +397,7 @@ export default function CompetitorSpy() {
             {alerts.length === 0 && (
               <div className="text-center py-8">
                 <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                <p className="text-gray-400">Все уведомления просмотрены</p>
+                <p className="text-gray-400">Alle Benachrichtigungen gelesen</p>
               </div>
             )}
           </CardContent>
@@ -409,17 +409,17 @@ export default function CompetitorSpy() {
         <CardContent className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-semibold text-blue-300 mb-1">Быстрые действия</h4>
-              <p className="text-blue-200 text-sm">Автоматически реагируй на изменения конкурентов</p>
+              <h4 className="font-semibold text-blue-300 mb-1">Schnellaktionen</h4>
+              <p className="text-blue-200 text-sm">Automatisch auf Änderungen der Konkurrenz reagieren</p>
             </div>
             <div className="flex gap-2">
               <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
                 <Zap className="w-3 h-3 mr-1" />
-                Авто-корректировка цен
+                Automatische Preisanpassung
               </Button>
               <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white">
                 <Target className="w-3 h-3 mr-1" />
-                Анализ стратегий
+                Strategieanalyse
               </Button>
             </div>
           </div>

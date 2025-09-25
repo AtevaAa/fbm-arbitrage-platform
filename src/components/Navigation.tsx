@@ -9,11 +9,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Crown } from "lucide-react";
 
 const navigationItems = [
-  { href: "/", label: "Главная" },
-  { href: "/subscriptions", label: "Подписки" },
-  { href: "/lessons/lesson-1", label: "Урок 1" },
-  { href: "/lessons/lesson-2", label: "Урок 2" },
-  { href: "/sales", label: "Продажи" },
+  { href: "/", label: "Startseite" },
+  { href: "/subscriptions", label: "Abonnements" },
+  { href: "/lessons/lesson-1", label: "Lektion 1" },
+  { href: "/lessons/lesson-2", label: "Lektion 2" },
+  { href: "/sales", label: "Verkäufe" },
 ];
 
 export default function Navigation() {
@@ -35,7 +35,7 @@ export default function Navigation() {
             href="/"
             className="font-bold text-xl bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition-transform duration-200"
           >
-            FBM Арбитраж
+            FBM Arbitrage
           </Link>
 
           {/* Desktop Navigation */}
@@ -83,7 +83,7 @@ export default function Navigation() {
           {/* Desktop CTA Button */}
           <div className="hidden md:block">
             <Button asChild className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
-              <Link href="/subscriptions">Начать</Link>
+              <Link href="/subscriptions">Starten</Link>
             </Button>
           </div>
 
@@ -97,7 +97,7 @@ export default function Navigation() {
                   className="text-white hover:bg-white/10 transition-colors duration-200"
                 >
                   <Menu className="h-6 w-6" />
-                  <span className="sr-only">Открыть меню</span>
+                  <span className="sr-only">Menü öffnen</span>
                 </Button>
               </SheetTrigger>
               <SheetContent
@@ -112,7 +112,7 @@ export default function Navigation() {
                       className="font-bold text-xl bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
                       onClick={() => setIsOpen(false)}
                     >
-                      FBM Арбитраж
+                      FBM Arbitrage
                     </Link>
                   </div>
 
@@ -147,7 +147,7 @@ export default function Navigation() {
                         )}
                       >
                         <Crown className="w-4 h-4" />
-                        VIP Зона
+                        VIP-Bereich
                       </Link>
                     )}
                   </div>
@@ -159,7 +159,7 @@ export default function Navigation() {
                       className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-3 rounded-full font-medium transition-all duration-300 shadow-lg"
                     >
                       <Link href="/subscriptions" onClick={() => setIsOpen(false)}>
-                        Начать обучение
+                        Training beginnen
                       </Link>
                     </Button>
                   </div>

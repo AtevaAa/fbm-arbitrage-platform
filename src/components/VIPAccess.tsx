@@ -24,7 +24,7 @@ import {
   BarChart3
 } from "lucide-react";
 
-// Импортируем VIP компоненты
+// VIP-Komponenten importieren
 import AIProductScout from "@/components/vip/AIProductScout";
 import PredictiveAnalytics from "@/components/vip/PredictiveAnalytics";
 import CompetitorSpy from "@/components/vip/CompetitorSpy";
@@ -42,10 +42,10 @@ export default function VIPAccess() {
     if (password === correctPassword) {
       setIsAuthenticated(true);
       setError("");
-      // Сохраняем в localStorage для навигации
+      // Für die Navigation im localStorage speichern
       localStorage.setItem("vip_access", "true");
     } else {
-      setError("Неверный пароль доступа");
+      setError("Falsches Zugangspasswort");
       setPassword("");
     }
   };
@@ -53,24 +53,24 @@ export default function VIPAccess() {
   const vipFeatures = [
     {
       id: "ai-scout",
-      title: "AI-агент поиска",
-      description: "Автоматический поиск 50K+ товаров ежедневно",
+      title: "KI-Such-Agent",
+      description: "Tägliche automatische Suche nach über 50.000 Produkten",
       icon: Bot,
       color: "from-blue-500 to-cyan-500",
       tab: "ai-scout"
     },
     {
       id: "predictive",
-      title: "Predictive Analytics",
-      description: "Прогнозы с точностью 89%",
+      title: "Prädiktive Analytik",
+      description: "Prognosen mit 89 % Genauigkeit",
       icon: Brain,
       color: "from-purple-500 to-pink-500",
       tab: "predictive"
     },
     {
       id: "competitor-spy",
-      title: "Шпионаж 24/7",
-      description: "Мониторинг конкурентов в реальном времени",
+      title: "24/7 Spionage",
+      description: "Wettbewerbsüberwachung in Echtzeit",
       icon: Eye,
       color: "from-green-500 to-emerald-500",
       tab: "competitor-spy"
@@ -87,21 +87,21 @@ export default function VIPAccess() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {!isAuthenticated ? (
-          /* VIP Password Entry */
+          /* VIP-Passworteingabe */
           <div className="text-center">
             <div className="flex items-center justify-center gap-3 mb-8">
               <Crown className="w-16 h-16 text-yellow-500 animate-bounce" />
               <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30 text-xl px-6 py-3 animate-pulse">
-                VIP EXCLUSIVE
+                VIP EXKLUSIV
               </Badge>
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent animate-gradient">
-              Секретные AI-инструменты
+              Geheime KI-Tools
             </h2>
 
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Эксклюзивные функции для максимизации прибыли. Доступ только по специальному паролю.
+              Exklusive Funktionen zur Gewinnmaximierung. Zugang nur mit einem speziellen Passwort.
             </p>
 
             <div className="max-w-md mx-auto mb-8">
@@ -109,14 +109,14 @@ export default function VIPAccess() {
                 <CardHeader className="text-center pb-4">
                   <CardTitle className="text-yellow-400 flex items-center justify-center gap-2">
                     <Lock className="w-5 h-5" />
-                    Введите пароль доступа
+                    Zugangspasswort eingeben
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handlePasswordSubmit} className="space-y-4">
                     <Input
                       type="password"
-                      placeholder="Секретный пароль"
+                      placeholder="Geheimes Passwort"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="bg-gray-800/80 border-yellow-500/30 text-white text-center text-lg"
@@ -130,14 +130,14 @@ export default function VIPAccess() {
                       data-crosshair
                     >
                       <Unlock className="w-5 h-5 mr-2" />
-                      Разблокировать VIP
+                      VIP freischalten
                     </Button>
                   </form>
                 </CardContent>
               </Card>
             </div>
 
-            {/* Preview of VIP Features */}
+            {/* Vorschau der VIP-Funktionen */}
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {vipFeatures.map((feature) => (
                 <Card key={feature.id} className="bg-black/40 backdrop-blur-sm border border-gray-700 relative overflow-hidden group">
@@ -152,7 +152,7 @@ export default function VIPAccess() {
                     <h3 className="font-bold text-white mb-2">{feature.title}</h3>
                     <p className="text-gray-400 text-sm">{feature.description}</p>
                     <div className="mt-4 text-xs text-yellow-400 font-semibold">
-                      🔒 Требует VIP доступ
+                      🔒 VIP-Zugang erforderlich
                     </div>
                   </CardContent>
                 </Card>
@@ -161,26 +161,26 @@ export default function VIPAccess() {
 
             <div className="mt-12 text-center">
               <div className="inline-flex items-center gap-4 bg-black/40 backdrop-blur-sm border border-yellow-500/30 rounded-full px-8 py-4">
-                <span className="text-yellow-400 font-semibold">💎 Подсказка:</span>
-                <span className="text-gray-300">Пароль выдается VIP-подписчикам</span>
+                <span className="text-yellow-400 font-semibold">💎 Tipp:</span>
+                <span className="text-gray-300">Das Passwort wird an VIP-Abonnenten vergeben</span>
               </div>
             </div>
           </div>
         ) : (
-          /* VIP Dashboard */
+          /* VIP-Dashboard */
           <div>
             <div className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Crown className="w-12 h-12 text-yellow-500" />
                 <Badge className="bg-green-500/20 text-green-300 border-green-500/30 text-lg px-4 py-2">
-                  VIP АКТИВИРОВАН
+                  VIP AKTIVIERT
                 </Badge>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
-                Добро пожаловать в VIP зону
+                Willkommen im VIP-Bereich
               </h2>
               <p className="text-xl text-gray-300 mb-6 max-w-3xl mx-auto">
-                Теперь у вас есть доступ к эксклюзивным AI-инструментам для максимизации прибыли
+                Sie haben jetzt Zugriff auf exklusive KI-Tools, um Ihren Gewinn zu maximieren
               </p>
 
               <Button
@@ -189,59 +189,59 @@ export default function VIPAccess() {
                 className="border-gray-700 text-gray-400 hover:bg-gray-800"
               >
                 <Lock className="w-4 h-4 mr-2" />
-                Заблокировать доступ
+                Zugang sperren
               </Button>
             </div>
 
-            {/* VIP Tools Tabs */}
+            {/* VIP-Tools-Tabs */}
             <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
               <TabsList className="grid w-full grid-cols-4 bg-gray-800/80 backdrop-blur-sm border border-gray-700 max-w-3xl mx-auto">
                 <TabsTrigger value="overview" className="data-[state=active]:bg-yellow-600">
-                  Обзор
+                  Übersicht
                 </TabsTrigger>
                 <TabsTrigger value="ai-scout" className="data-[state=active]:bg-blue-600">
-                  AI-агент
+                  KI-Agent
                 </TabsTrigger>
                 <TabsTrigger value="predictive" className="data-[state=active]:bg-purple-600">
-                  Аналитика
+                  Analytik
                 </TabsTrigger>
                 <TabsTrigger value="competitor-spy" className="data-[state=active]:bg-green-600">
-                  Конкуренты
+                  Konkurrenten
                 </TabsTrigger>
               </TabsList>
 
-              {/* Overview Tab */}
+              {/* Übersichts-Tab */}
               <TabsContent value="overview">
                 <div className="space-y-8">
-                  {/* Quick Stats */}
+                  {/* Schnelle Statistiken */}
                   <div className="grid md:grid-cols-4 gap-6">
                     <Card className="bg-black/60 backdrop-blur-sm border border-blue-500/30">
                       <CardContent className="p-6 text-center">
                         <div className="text-3xl font-bold text-blue-400 mb-2">50K+</div>
-                        <div className="text-gray-400 text-sm">товаров в день</div>
+                        <div className="text-gray-400 text-sm">Produkte pro Tag</div>
                       </CardContent>
                     </Card>
                     <Card className="bg-black/60 backdrop-blur-sm border border-purple-500/30">
                       <CardContent className="p-6 text-center">
                         <div className="text-3xl font-bold text-purple-400 mb-2">89%</div>
-                        <div className="text-gray-400 text-sm">точность AI</div>
+                        <div className="text-gray-400 text-sm">KI-Genauigkeit</div>
                       </CardContent>
                     </Card>
                     <Card className="bg-black/60 backdrop-blur-sm border border-green-500/30">
                       <CardContent className="p-6 text-center">
                         <div className="text-3xl font-bold text-green-400 mb-2">24/7</div>
-                        <div className="text-gray-400 text-sm">мониторинг</div>
+                        <div className="text-gray-400 text-sm">Überwachung</div>
                       </CardContent>
                     </Card>
                     <Card className="bg-black/60 backdrop-blur-sm border border-yellow-500/30">
                       <CardContent className="p-6 text-center">
                         <div className="text-3xl font-bold text-yellow-400 mb-2">+347%</div>
-                        <div className="text-gray-400 text-sm">рост прибыли</div>
+                        <div className="text-gray-400 text-sm">Gewinnwachstum</div>
                       </CardContent>
                     </Card>
                   </div>
 
-                  {/* VIP Features Grid */}
+                  {/* VIP-Funktionen-Raster */}
                   <div className="grid lg:grid-cols-3 gap-8">
                     {vipFeatures.map((feature) => (
                       <Card
@@ -266,7 +266,7 @@ export default function VIPAccess() {
                             className={`w-full bg-gradient-to-r ${feature.color} hover:opacity-90 text-white transition-all duration-300`}
                             data-crosshair
                           >
-                            Открыть инструмент
+                            Tool öffnen
                           </Button>
                         </CardContent>
                       </Card>
@@ -275,17 +275,17 @@ export default function VIPAccess() {
                 </div>
               </TabsContent>
 
-              {/* AI Scout Tab */}
+              {/* KI-Scout-Tab */}
               <TabsContent value="ai-scout">
                 <AIProductScout />
               </TabsContent>
 
-              {/* Predictive Analytics Tab */}
+              {/* Prädiktive-Analytik-Tab */}
               <TabsContent value="predictive">
                 <PredictiveAnalytics />
               </TabsContent>
 
-              {/* Competitor Spy Tab */}
+              {/* Konkurrenz-Spionage-Tab */}
               <TabsContent value="competitor-spy">
                 <CompetitorSpy />
               </TabsContent>

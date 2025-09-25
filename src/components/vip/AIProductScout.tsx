@@ -113,9 +113,9 @@ export default function AIProductScout() {
 
   const formatTimeAgo = (date: Date) => {
     const minutes = Math.floor((Date.now() - date.getTime()) / 60000);
-    if (minutes < 60) return `${minutes} мин назад`;
+    if (minutes < 60) return `${minutes} Min. her`;
     const hours = Math.floor(minutes / 60);
-    return `${hours} ч назад`;
+    return `${hours} Std. her`;
   };
 
   return (
@@ -125,9 +125,9 @@ export default function AIProductScout() {
         <CardHeader>
           <CardTitle className="text-white flex items-center gap-3">
             <Bot className="w-8 h-8 text-blue-400" />
-            AI-агент поиска товаров
+            KI-Produkt-Scout
             <Badge className={`${isScanning ? 'bg-green-500/20 text-green-300 border-green-500/30 animate-pulse' : 'bg-gray-500/20 text-gray-300 border-gray-500/30'}`}>
-              {isScanning ? "Активен" : "Остановлен"}
+              {isScanning ? "Aktiv" : "Gestoppt"}
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -136,7 +136,7 @@ export default function AIProductScout() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label className="text-white">Автоматический режим</Label>
+                <Label className="text-white">Automatikmodus</Label>
                 <Switch
                   checked={autoMode}
                   onCheckedChange={setAutoMode}
@@ -144,7 +144,7 @@ export default function AIProductScout() {
               </div>
 
               <div>
-                <Label className="text-white">Минимальная маржа (%)</Label>
+                <Label className="text-white">Minimale Marge (%)</Label>
                 <div className="mt-2">
                   <Slider
                     value={minMargin}
@@ -163,7 +163,7 @@ export default function AIProductScout() {
               </div>
 
               <div>
-                <Label className="text-white">Максимальная цена товара ($)</Label>
+                <Label className="text-white">Maximaler Produktpreis ($)</Label>
                 <div className="mt-2">
                   <Slider
                     value={maxPrice}
@@ -188,18 +188,18 @@ export default function AIProductScout() {
                   <div className="text-3xl font-bold text-blue-400 mb-1">
                     {scannedToday.toLocaleString()}
                   </div>
-                  <div className="text-gray-400 text-sm">товаров просканировано сегодня</div>
+                  <div className="text-gray-400 text-sm">Produkte heute gescannt</div>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-black/40 rounded-lg p-3 border border-gray-700 text-center">
                   <div className="text-xl font-bold text-green-400">{foundProducts.length}</div>
-                  <div className="text-gray-400 text-xs">найдено</div>
+                  <div className="text-gray-400 text-xs">gefunden</div>
                 </div>
                 <div className="bg-black/40 rounded-lg p-3 border border-gray-700 text-center">
                   <div className="text-xl font-bold text-yellow-400">89%</div>
-                  <div className="text-gray-400 text-xs">точность</div>
+                  <div className="text-gray-400 text-xs">Genauigkeit</div>
                 </div>
               </div>
 
@@ -213,12 +213,12 @@ export default function AIProductScout() {
                 {isScanning ? (
                   <>
                     <Pause className="w-4 h-4 mr-2" />
-                    Остановить сканирование
+                    Scan stoppen
                   </>
                 ) : (
                   <>
                     <Play className="w-4 h-4 mr-2" />
-                    Запустить сканирование
+                    Scan starten
                   </>
                 )}
               </Button>
@@ -232,9 +232,9 @@ export default function AIProductScout() {
         <CardHeader>
           <CardTitle className="text-white flex items-center gap-3">
             <Target className="w-6 h-6 text-green-400" />
-            Найденные товары
+            Gefundene Produkte
             <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
-              {foundProducts.length} активных
+              {foundProducts.length} aktiv
             </Badge>
           </CardTitle>
         </CardHeader>
@@ -264,32 +264,32 @@ export default function AIProductScout() {
                         <span className="text-white font-medium">${product.currentPrice}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Поставщик:</span>
+                        <span className="text-gray-400">Lieferant:</span>
                         <span className="text-green-400 font-medium">${product.supplierPrice}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Маржа:</span>
+                        <span className="text-gray-400">Marge:</span>
                         <span className="text-blue-400 font-bold">{product.margin}%</span>
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-400 text-sm">Рейтинг:</span>
+                        <span className="text-gray-400 text-sm">Rang:</span>
                         <span className="text-white text-sm">#{product.ranking.toLocaleString()}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-400 text-sm">Конкуренция:</span>
+                        <span className="text-gray-400 text-sm">Wettbewerb:</span>
                         <span className={`text-sm font-medium ${getCompetitionColor(product.competition)}`}>
                           {product.competition}
                         </span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-400 text-sm">Тренд:</span>
+                        <span className="text-gray-400 text-sm">Trend:</span>
                         <span className="text-sm">{getTrendIcon(product.trend)}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-400 text-sm">Уверенность:</span>
+                        <span className="text-gray-400 text-sm">Zuversicht:</span>
                         <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
                           {product.confidence}%
                         </Badge>
@@ -300,11 +300,11 @@ export default function AIProductScout() {
                   <div className="flex gap-2 mt-4">
                     <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white">
                       <DollarSign className="w-3 h-3 mr-1" />
-                      Добавить в портфель
+                      Zum Portfolio hinzufügen
                     </Button>
                     <Button size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
                       <Search className="w-3 h-3 mr-1" />
-                      Детальный анализ
+                      Detaillierte Analyse
                     </Button>
                   </div>
                 </CardContent>
@@ -315,8 +315,8 @@ export default function AIProductScout() {
           {foundProducts.length === 0 && (
             <div className="text-center py-12">
               <Bot className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-400 mb-2">Товары не найдены</h3>
-              <p className="text-gray-500">Запустите сканирование, чтобы AI-агент нашел прибыльные товары</p>
+              <h3 className="text-xl font-semibold text-gray-400 mb-2">Keine Produkte gefunden</h3>
+              <p className="text-gray-500">Starten Sie den Scan, damit der KI-Agent profitable Produkte findet</p>
             </div>
           )}
         </CardContent>
@@ -328,11 +328,11 @@ export default function AIProductScout() {
           <div className="flex items-center gap-3">
             <Bell className="w-5 h-5 text-yellow-400" />
             <div className="flex-1">
-              <h4 className="font-semibold text-yellow-300">Новые возможности обнаружены!</h4>
-              <p className="text-yellow-200 text-sm">AI-агент нашел 3 новых товара с маржой 60%+ за последний час</p>
+              <h4 className="font-semibold text-yellow-300">Neue Möglichkeiten entdeckt!</h4>
+              <p className="text-yellow-200 text-sm">Der KI-Agent hat in der letzten Stunde 3 neue Produkte mit einer Marge von über 60 % gefunden</p>
             </div>
             <Button size="sm" className="bg-yellow-600 hover:bg-yellow-700 text-black">
-              Посмотреть
+              Ansehen
             </Button>
           </div>
         </CardContent>

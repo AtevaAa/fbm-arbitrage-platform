@@ -45,7 +45,7 @@ export default function SubscriptionModal({
     e.preventDefault();
     setIsProcessing(true);
 
-    // Симуляция обработки платежа
+    // Simulation der Zahlungsabwicklung
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     setIsProcessing(false);
@@ -74,24 +74,24 @@ export default function SubscriptionModal({
 
   const renderStep1 = () => (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-white mb-4">Личная информация</h3>
+      <h3 className="text-lg font-semibold text-white mb-4">Persönliche Informationen</h3>
 
       <div>
-        <Label htmlFor="email" className="text-white">Email *</Label>
+        <Label htmlFor="email" className="text-white">E-Mail *</Label>
         <Input
           id="email"
           type="email"
           value={formData.email}
           onChange={(e) => handleInputChange("email", e.target.value)}
           className="bg-gray-800 border-gray-700 text-white mt-1"
-          placeholder="your@email.com"
+          placeholder="deine@email.com"
           required
         />
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="name" className="text-white">Имя *</Label>
+          <Label htmlFor="name" className="text-white">Name *</Label>
           <Input
             id="name"
             value={formData.name}
@@ -101,29 +101,28 @@ export default function SubscriptionModal({
           />
         </div>
         <div>
-          <Label htmlFor="phone" className="text-white">Телефон</Label>
+          <Label htmlFor="phone" className="text-white">Telefon</Label>
           <Input
             id="phone"
             value={formData.phone}
             onChange={(e) => handleInputChange("phone", e.target.value)}
             className="bg-gray-800 border-gray-700 text-white mt-1"
-            placeholder="+7 (999) 123-45-67"
+            placeholder="+49 123 4567890"
           />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="country" className="text-white">Страна</Label>
+        <Label htmlFor="country" className="text-white">Land</Label>
         <Select onValueChange={(value) => handleInputChange("country", value)}>
           <SelectTrigger className="bg-gray-800 border-gray-700 text-white mt-1">
-            <SelectValue placeholder="Выберите страну" />
+            <SelectValue placeholder="Wählen Sie Ihr Land" />
           </SelectTrigger>
           <SelectContent className="bg-gray-800 border-gray-700 text-white">
-            <SelectItem value="ru">Россия</SelectItem>
-            <SelectItem value="by">Беларусь</SelectItem>
-            <SelectItem value="kz">Казахстан</SelectItem>
-            <SelectItem value="ua">Украина</SelectItem>
-            <SelectItem value="other">Другая</SelectItem>
+            <SelectItem value="de">Deutschland</SelectItem>
+            <SelectItem value="at">Österreich</SelectItem>
+            <SelectItem value="ch">Schweiz</SelectItem>
+            <SelectItem value="other">Andere</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -133,7 +132,7 @@ export default function SubscriptionModal({
         className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
         disabled={!formData.email || !formData.name}
       >
-        Продолжить к оплате
+        Weiter zur Zahlung
       </Button>
     </div>
   );
@@ -142,24 +141,24 @@ export default function SubscriptionModal({
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-4">
         <CreditCard className="w-5 h-5 text-blue-400" />
-        <h3 className="text-lg font-semibold text-white">Данные карты</h3>
+        <h3 className="text-lg font-semibold text-white">Kartendetails</h3>
         <Lock className="w-4 h-4 text-green-400" />
       </div>
 
       <div>
-        <Label htmlFor="cardHolder" className="text-white">Имя держателя карты *</Label>
+        <Label htmlFor="cardHolder" className="text-white">Name des Karteninhabers *</Label>
         <Input
           id="cardHolder"
           value={formData.cardHolder}
           onChange={(e) => handleInputChange("cardHolder", e.target.value)}
           className="bg-gray-800 border-gray-700 text-white mt-1"
-          placeholder="IVAN PETROV"
+          placeholder="MAX MUSTERMANN"
           required
         />
       </div>
 
       <div>
-        <Label htmlFor="cardNumber" className="text-white">Номер карты *</Label>
+        <Label htmlFor="cardNumber" className="text-white">Kartennummer *</Label>
         <Input
           id="cardNumber"
           value={formData.cardNumber}
@@ -173,13 +172,13 @@ export default function SubscriptionModal({
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="expiry" className="text-white">Срок действия *</Label>
+          <Label htmlFor="expiry" className="text-white">Gültig bis *</Label>
           <Input
             id="expiry"
             value={formData.expiry}
             onChange={(e) => handleInputChange("expiry", e.target.value)}
             className="bg-gray-800 border-gray-700 text-white mt-1"
-            placeholder="MM/YY"
+            placeholder="MM/JJ"
             maxLength={5}
             required
           />
@@ -201,9 +200,9 @@ export default function SubscriptionModal({
       <div className="bg-gray-800/50 rounded-lg p-3 text-sm text-gray-400">
         <div className="flex items-center gap-2 mb-1">
           <Lock className="w-4 h-4 text-green-400" />
-          <span className="text-green-400">Безопасная оплата</span>
+          <span className="text-green-400">Sichere Zahlung</span>
         </div>
-        <p>Ваши данные защищены SSL-шифрованием</p>
+        <p>Ihre Daten sind durch SSL-Verschlüsselung geschützt</p>
       </div>
 
       <div className="flex gap-3">
@@ -212,14 +211,14 @@ export default function SubscriptionModal({
           variant="outline"
           className="flex-1 border-gray-700 text-gray-300 hover:bg-gray-800"
         >
-          Назад
+          Zurück
         </Button>
         <Button
           onClick={handleSubmit}
           className="flex-1 bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white"
           disabled={!formData.cardNumber || !formData.expiry || !formData.cvv || !formData.cardHolder || isProcessing}
         >
-          {isProcessing ? "Обработка..." : `Оплатить ${planPrice}${planPeriod}`}
+          {isProcessing ? "Verarbeitung..." : `Bezahlen ${planPrice}${planPeriod}`}
         </Button>
       </div>
     </div>
@@ -230,12 +229,12 @@ export default function SubscriptionModal({
       <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
         <Check className="w-10 h-10 text-white" />
       </div>
-      <h3 className="text-2xl font-bold text-white mb-2">Подписка активирована!</h3>
+      <h3 className="text-2xl font-bold text-white mb-2">Abonnement aktiviert!</h3>
       <p className="text-gray-400 mb-4">
-        Добро пожаловать в тариф <span className="text-blue-400 font-semibold">{planName}</span>
+        Willkommen beim <span className="text-blue-400 font-semibold">{planName}</span> Tarif
       </p>
       <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
-        Доступ открыт
+        Zugang gewährt
       </Badge>
     </div>
   );
@@ -248,13 +247,13 @@ export default function SubscriptionModal({
       <DialogContent className="sm:max-w-[600px] bg-black/95 backdrop-blur-xl border border-gray-800 text-white max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Оформление подписки
+            Abonnement abschließen
           </DialogTitle>
         </DialogHeader>
 
         {isSuccess ? renderSuccess() : (
           <div className="space-y-6">
-            {/* План подписки */}
+            {/* Abonnement-Plan */}
             <Card className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border-blue-500/30">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-3">
@@ -275,24 +274,24 @@ export default function SubscriptionModal({
               </CardContent>
             </Card>
 
-            {/* Шаги */}
+            {/* Schritte */}
             <div className="flex items-center gap-4 mb-6">
               <div className={`flex items-center gap-2 ${currentStep >= 1 ? 'text-blue-400' : 'text-gray-500'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep >= 1 ? 'bg-blue-500' : 'bg-gray-700'}`}>
                   1
                 </div>
-                <span className="text-sm">Данные</span>
+                <span className="text-sm">Daten</span>
               </div>
               <div className={`h-px flex-1 ${currentStep >= 2 ? 'bg-blue-500' : 'bg-gray-700'}`} />
               <div className={`flex items-center gap-2 ${currentStep >= 2 ? 'text-blue-400' : 'text-gray-500'}`}>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep >= 2 ? 'bg-blue-500' : 'bg-gray-700'}`}>
                   2
                 </div>
-                <span className="text-sm">Оплата</span>
+                <span className="text-sm">Zahlung</span>
               </div>
             </div>
 
-            {/* Форма */}
+            {/* Formular */}
             <form onSubmit={handleSubmit}>
               {currentStep === 1 ? renderStep1() : renderStep2()}
             </form>
